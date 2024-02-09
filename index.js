@@ -1,27 +1,22 @@
-// Your code here
-const dodger = document.getElementById('dodger');
-function moveDodgerLeft() {
-    const leftNumbers = dodger.style.left.replace("px", "");
-    const left = parseInt(leftNumbers, 10);
+const dodger = document.getElementById("dodger")
+document.addEventListener('keydown', function(event){
+  const leftDist = parseInt(dodger.style.left.replace("px",""), 10)
   
-    if (left > 0) {
-      dodger.style.left = `${left - 10}px`;
-    }
+  if( leftDist > 0 && ( event.key === "ArrowLeft" || event.key === "a" )){
+    moveDodgerLeft()
+  }else if ( leftDist < 360 && (event.key === "ArrowRight" || event.key === "d")){
+    moveDodgerRight()
   }
-  document.addEventListener("keydown", function (e) {
-    if (e.key === "ArrowLeft") {
-      moveDodgerLeft();
-    }
-  });
-function moveDodgerRight(){
-    const leftNumbers = dodger.style.left.replace("px", "");
-    const left = parseInt(leftNumbers, 10);
-    if (left<360){
-        dodger.style.left = `${left +10}px`;
-    }
+})
+function moveDodgerRight(event){
+  const leftNumber = dodger.style.left.replace("px", "");
+  const left = parseInt(leftNumber, 10);
+  dodger.style.left = `${left+1}px`
+  }
+function moveDodgerLeft(event){
+  const leftNumber = dodger.style.left.replace("px", "")
+  const left = parseInt(leftNumber, 10)
+  dodger.style.left = `${left-1}px`
 }
-document.addEventListener("keydown", function (e) {
-    if (e.key === "ArrowRight") {
-      moveDodgerRight();
-    }
-});
+
+
